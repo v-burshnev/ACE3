@@ -121,11 +121,11 @@ class RscInGameUI {
                     x = "(0.58 + 4 * 0.02) * safezoneW";
                     y = "0.2 * safezoneH";
                 };
+
+                //distance2
                 class Digit10: Digit0 {
                     idc = IDC_DIGIT_D2_0;
                     y = "0.3 * safezoneH";
-                    w = "0.5 / 16 * safezoneW";
-                    h = "0.5 / 9 * safezoneH";
                 };
                 class Digit11: Digit10 {
                     idc = IDC_DIGIT_D2_1;
@@ -145,25 +145,25 @@ class RscInGameUI {
                 };
 
                 // Target Elevation Angle
-                class DigitTGA1: Digit0 {
+                class DigitTGA0: Digit0 {
+                    idc = IDC_DIGIT_TGA1;
+                    y = "0.4 * safezoneH";
+                };
+                class DigitTGA1: DigitTGA0 {
                     idc = IDC_DIGIT_TGA1;
                     x = "(0.58 + 0 * 0.02) * safezoneW";
-                    y = "0.5 * safezoneH";
                 };
-                class DigitTGA2: Digit0 {
+                class DigitTGA2: DigitTGA0 {
                     idc = IDC_DIGIT_TGA2;
                     x = "(0.58 + 1 * 0.02) * safezoneW";
-                    y = "0.5 * safezoneH";
                 };
-                class DigitTGA3: Digit0 {
+                class DigitTGA3: DigitTGA0 {
                     idc = IDC_DIGIT_TGA3;
                     x = "(0.58 + 2 * 0.02) * safezoneW";
-                    y = "0.5 * safezoneH";
                 };
-                class DigitTGA4: Digit0 {
+                class DigitTGA4: DigitTGA0 {
                     idc = IDC_DIGIT_TGA4;
                     x = "(0.58 + 3 * 0.02) * safezoneW";
-                    y = "0.5 * safezoneH";
                 };
 
                 // Game time digits
