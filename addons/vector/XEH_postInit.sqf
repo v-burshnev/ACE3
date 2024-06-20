@@ -3,6 +3,7 @@
 
 if (!hasInterface) exitWith {};
 
+GVAR(minDistance) = 10;
 GVAR(holdKeyHandler) = -1;
 GVAR(isShowGameTime) = false;
 GVAR(isKeyDownAzimuth) = false;
@@ -23,7 +24,9 @@ ACE_player addEventHandler [
 	if !(currentWeapon ACE_player isKindOf ["ACE_Vector", configFile >> "CfgWeapons"] && _isADS) then {
 		GVAR(isShowGameTime) = false;
         ["time"] call FUNC(clearDisplay);
+        ["strobe"] call FUNC(clearDisplay);
 	} else {
+		[missionNamespace, "StrobeChanged", []] call BIS_fnc_callScriptedEventHandler;
 		if (!GVAR(isShowGameTime)) then {
 			GVAR(isShowGameTime) = true;
 			call FUNC(showGameTime);
@@ -47,5 +50,7 @@ ACE_player addEventHandler [
 		}
     }
 }];
+
+[missionNamespace, "StrobeChanged", { call FUNC(showStrobe) }] call BIS_fnc_addScriptedEventHandler;
 
 #include "initKeybinds.inc.sqf"
