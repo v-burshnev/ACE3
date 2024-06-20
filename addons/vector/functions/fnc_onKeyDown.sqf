@@ -38,12 +38,13 @@ private _fnc_setPFH = {
     };
 
     GVAR(currentMode) = _this;
-    GVAR(holdKeyHandler) = [FUNC(onKeyHold), 0, _this] call CBA_fnc_addPerFrameHandler;
+    GVAR(holdKeyHandler) = [LINKFUNC(onKeyHold), 0, _this] call CBA_fnc_addPerFrameHandler;
 };
 
 switch (_this select 0) do {
     case ("azimuth"): {
         GVAR(keyDownTabCountDistance) = 0;
+        GVAR(keyDownTabCountDistance2) = 0;
 
         // handle input in option menu
         if (GVAR(currentMode) == "settings") exitWith {
@@ -65,9 +66,10 @@ switch (_this select 0) do {
         };
 
         // prevent additinal modifier input if advanced mode it set, spaghetti
-        if (GETGVAR(isKeyDownDistance,false) && {GETGVAR(currentMode,"") in ["relative_distance", "relative_height+length"]}) exitWith {};
+        if (GETGVAR(isKeyDownDistance,false) && GETGVAR(isKeyDownDistance2,false) && {GETGVAR(currentMode,"") in ["relative_distance", "relative_height+length"]}) exitWith {};
 
         ["azimuth"] call FUNC(clearDisplay);
+        ["targetAngle"] call FUNC(clearDisplay);
 
         GVAR(isKeyDownAzimuth) = true;
         [false] call FUNC(showP1);
@@ -98,14 +100,12 @@ switch (_this select 0) do {
 
         if (diag_tickTime > GVAR(keyDownTimeDistance) + 0.5) then {
             if !(GETGVAR(isKeyDownDistance,false)) then {
-                ["distance"] call FUNC(clearDisplay);
                 "azimuth" call _fnc_setPFH;
             };
         } else {
             if (GETGVAR(isKeyDownDistance,false)) then {
                 "azimuth+distance" call _fnc_setPFH;
             } else {
-                ["distance"] call FUNC(clearDisplay);
                 "azimuth" call _fnc_setPFH;
             };
         };
@@ -173,15 +173,86 @@ switch (_this select 0) do {
 
         if (diag_tickTime > GVAR(keyDownTimeAzimuth) + 0.5) then {
             if !(GETGVAR(isKeyDownAzimuth,false)) then {
-                ["azimuth"] call FUNC(clearDisplay);
                 "distance" call _fnc_setPFH;
             };
         } else {
             if (GETGVAR(isKeyDownAzimuth,false)) then {
                 "azimuth+distance" call _fnc_setPFH;
             } else {
-                ["azimuth"] call FUNC(clearDisplay);
                 "distance" call _fnc_setPFH;
+            };
+        };
+
+    };
+
+    case ("distance2"): {
+        GVAR(keyDownTabCountAzimuth) = 0;
+
+        // handle input in option menu
+        if (GVAR(currentMode) == "config") exitWith {
+            if (diag_tickTime < GVAR(keyDownTimeMenu) + 0.5) exitWith {};
+
+            if (diag_tickTime < GVAR(keyDownTimeDistance2) + 0.5) then {
+                GVAR(keyDownTabCountDistance2) = (GETGVAR(keyDownTabCountDistance2,0)) + 1;
+            } else {
+                GVAR(keyDownTabCountDistance2) = 1;
+            };
+
+            GVAR(keyDownTimeDistance2) = diag_tickTime;
+        };
+
+        if (GVAR(currentMode) == "settings") exitWith {
+            if (diag_tickTime < GVAR(keyDownTimeMenu) + 0.5) exitWith {};
+
+            ["settings"] call FUNC(nextMode);
+        };
+
+        // prevent additinal modifier input if advanced mode it set, spaghetti
+        if (GETGVAR(isKeyDownAzimuth,false) && {GETGVAR(currentMode,"") in ["relative_azimuth+distance2", "fall_of_shot"]}) exitWith {};
+
+        // toggle fos values
+        if (GETGVAR(currentMode,"") == "fall_of_shot") exitWith {
+            [!(GETGVAR(FOSState,true))] call FUNC(showFallOfShot);
+        };
+
+        ["distance2"] call FUNC(clearDisplay);
+
+        GVAR(isKeyDownDistance2) = true;
+        [false] call FUNC(showP1);
+
+        // handle 5 times clicking
+        if (diag_tickTime < GVAR(keyDownTimeDistance2) + 0.5) then {
+            GVAR(keyDownTabCountDistance2) = (GETGVAR(keyDownTabCountDistance2,0)) + 1;
+            GVAR(keyDownTimeDistance2) = diag_tickTime;
+        } else {
+            GVAR(keyDownTabCountDistance2) = 1;
+        };
+
+        // open config menu
+        if (GVAR(keyDownTabCountDistance2) == 5) exitWith {
+            GVAR(keyDownTimeMenu) = diag_tickTime;
+            GVAR(keyDownTimeDistance2) = diag_tickTime;
+            GVAR(keyDownTabCountDistance2) = 0;
+            GVAR(configTemp) = GVAR(modeReticle);
+            ["config"] call FUNC(showText);
+            "config" call _fnc_setPFH;
+        };
+
+        if (diag_tickTime < GVAR(keyDownTimeDistance2) + 0.5) exitWith {
+            "height+distance2" call _fnc_setPFH;
+        };
+
+        GVAR(keyDownTimeDistance2) = diag_tickTime;
+
+        if (diag_tickTime > GVAR(keyDownTimeAzimuth) + 0.5) then {
+            if !(GETGVAR(isKeyDownAzimuth,false)) then {
+                "distance2" call _fnc_setPFH;
+            };
+        } else {
+            if (GETGVAR(isKeyDownAzimuth,false)) then {
+                "azimuth+distance2" call _fnc_setPFH;
+            } else {
+                "distance2" call _fnc_setPFH;
             };
         };
 

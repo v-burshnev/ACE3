@@ -46,7 +46,7 @@
             <Hungarian>Távolságmérő</Hungarian>
             <Portuguese>Medidor de Distância</Portuguese>
             <Russian>Дальномер</Russian>
-            <Japanese>測距機器</Japanese>
+            <Japanese>測距儀</Japanese>
             <Korean>거리측정기</Korean>
             <Chinesesimp>测距仪</Chinesesimp>
             <Chinese>測距儀</Chinese>
@@ -85,6 +85,18 @@
             <Chinesesimp>Vector—距离按键</Chinesesimp>
             <Chinese>Vector - 距離按鍵</Chinese>
             <Turkish>Vector - Mesafe Tuşu</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Vector_Distance2Key">
+            <English>Vector - Distance2 Key</English>
+            <Russian>Vector – Расстояние2</Russian>
+        </Key>
+        <Key ID="STR_ACE_Vector_EnlargeStrobeKey">
+            <English>Vector - Enlarge Strobe Key</English>
+            <Russian>Vector – Увеличить строб</Russian>
+        </Key>
+        <Key ID="STR_ACE_Vector_DecreaseStrobeKey">
+            <English>Vector - Decrease Strobe Key</English>
+            <Russian>Vector – Уменьшить строб</Russian>
         </Key>
     </Package>
 </Project>
