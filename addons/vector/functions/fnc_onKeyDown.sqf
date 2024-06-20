@@ -100,14 +100,12 @@ switch (_this select 0) do {
 
         if (diag_tickTime > GVAR(keyDownTimeDistance) + 0.5) then {
             if !(GETGVAR(isKeyDownDistance,false)) then {
-                //["distance"] call FUNC(clearDisplay);
                 "azimuth" call _fnc_setPFH;
             };
         } else {
             if (GETGVAR(isKeyDownDistance,false)) then {
                 "azimuth+distance" call _fnc_setPFH;
             } else {
-                //["distance"] call FUNC(clearDisplay);
                 "azimuth" call _fnc_setPFH;
             };
         };
@@ -175,16 +173,12 @@ switch (_this select 0) do {
 
         if (diag_tickTime > GVAR(keyDownTimeAzimuth) + 0.5) then {
             if !(GETGVAR(isKeyDownAzimuth,false)) then {
-                //["azimuth"] call FUNC(clearDisplay);
-                ["targetAngle"] call FUNC(clearDisplay);
                 "distance" call _fnc_setPFH;
             };
         } else {
             if (GETGVAR(isKeyDownAzimuth,false)) then {
                 "azimuth+distance" call _fnc_setPFH;
             } else {
-                //["azimuth"] call FUNC(clearDisplay);
-                ["targetAngle"] call FUNC(clearDisplay);
                 "distance" call _fnc_setPFH;
             };
         };
@@ -252,14 +246,12 @@ switch (_this select 0) do {
 
         if (diag_tickTime > GVAR(keyDownTimeAzimuth) + 0.5) then {
             if !(GETGVAR(isKeyDownAzimuth,false)) then {
-                //["azimuth"] call FUNC(clearDisplay);
                 "distance2" call _fnc_setPFH;
             };
         } else {
             if (GETGVAR(isKeyDownAzimuth,false)) then {
                 "azimuth+distance2" call _fnc_setPFH;
             } else {
-                //["azimuth"] call FUNC(clearDisplay);
                 "distance2" call _fnc_setPFH;
             };
         };
