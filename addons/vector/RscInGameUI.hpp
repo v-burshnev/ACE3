@@ -241,6 +241,21 @@ class RscInGameUI {
                     x = "(0.58 + 3 * 0.01 + 0.097) * safezoneW";
                 };
 
+                // Zoom
+                class DigitZoom1: Digit0 {
+                    idc = IDC_DIGIT_Z1;
+                    x = "(0.505 - 2 * 0.01) * safezoneW";
+                    y = "0.952 * safezoneH";
+                };
+                class DigitZoom2: DigitZoom1 {
+                    idc = IDC_DIGIT_Z2;
+                    x = "(0.505 - 1 * 0.01) * safezoneW";
+                };
+                class DigitZoom3: DigitZoom1 {
+                    idc = IDC_DIGIT_Z3;
+                    x = "(0.505 - 0 * 0.01) * safezoneW";
+                };
+
                 // Game time digits
                 class DigitTime: Digit0 {
                     y = "0.93 * safezoneH";

@@ -90,8 +90,8 @@
             <English>Vector - Distance2 Key</English>
             <Russian>Vector – Расстояние2</Russian>
         </Key>
-        <Key ID="STR_ACE_Vector_EnlargeStrobeKey">
-            <English>Vector - Enlarge Strobe Key</English>
+        <Key ID="STR_ACE_Vector_IncreaseStrobeKey">
+            <English>Vector - Increase Strobe Key</English>
             <Russian>Vector – Увеличить строб</Russian>
         </Key>
         <Key ID="STR_ACE_Vector_DecreaseStrobeKey">
