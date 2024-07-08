@@ -30,6 +30,7 @@ PREP(showFallOfShot);
 PREP(convertToTexturesTimeBlock);
 PREP(getInGameTime);
 PREP(showGameTime);
+PREP(showZoom);
 PREP(showText);
 PREP(nextMode);
 PREP(adjustBrightness);

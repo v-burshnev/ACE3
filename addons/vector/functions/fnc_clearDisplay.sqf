@@ -66,6 +66,12 @@ switch (_this select 0) do {
         (_dlgVector displayCtrl IDC_DIGIT_TS2) ctrlSetText "";
     };
 
+    case ("zoom"): {
+        (_dlgVector displayCtrl IDC_DIGIT_Z1) ctrlSetText "";
+        (_dlgVector displayCtrl IDC_DIGIT_Z2) ctrlSetText "";
+        (_dlgVector displayCtrl IDC_DIGIT_Z3) ctrlSetText "";
+    };
+
     case ("strobe"): {
         (_dlgVector displayCtrl IDC_DIGIT_STR_HEADER) ctrlSetText "";
         (_dlgVector displayCtrl IDC_DIGIT_STR1) ctrlSetText "";

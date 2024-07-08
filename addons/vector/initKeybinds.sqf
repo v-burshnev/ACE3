@@ -73,14 +73,14 @@
     false
 }, [DIK_R, [false, false, false]], false, 0] call CBA_fnc_addKeybind;
 
-["ACE3 Equipment", QGVAR(EnlargeStrobeKey), localize LSTRING(EnlargeStrobeKey), {
+["ACE3 Equipment", QGVAR(IncreaseStrobeKey), localize LSTRING(IncreaseStrobeKey), {
     private _strobe = GVAR(minDistance);
     _strobe = _strobe + 10;
     if (_strobe > 100) exitWith {false};
     GVAR(minDistance) = _strobe;
     [missionNamespace, "StrobeChanged", []] call BIS_fnc_callScriptedEventHandler;
     false
-}, {}, [DIK_NUMPADPLUS, [false, true, false]], false, 0] call CBA_fnc_addKeybind;
+}, {}, [DIK_PGUP, [false, true, false]], false, 0] call CBA_fnc_addKeybind;
 
 ["ACE3 Equipment", QGVAR(DecreaseStrobeKey), localize LSTRING(DecreaseStrobeKey), {
     private _strobe = GVAR(minDistance);
@@ -89,4 +89,4 @@
     GVAR(minDistance) = _strobe;
     [missionNamespace, "StrobeChanged", []] call BIS_fnc_callScriptedEventHandler;
     false
-}, {}, [DIK_NUMPADMINUS, [false, true, false]], false, 0] call CBA_fnc_addKeybind;
+}, {}, [DIK_PGDN, [false, true, false]], false, 0] call CBA_fnc_addKeybind;
