@@ -7,8 +7,11 @@ class CfgWeapons {
         model = QPATHTOF(ace_vector.p3d);
         picture = QPATHTOF(UI\ace_vector_x_ca.paa);
         visionMode[] = {"Normal","NVG"};
-        opticsZoomMax = 0.25/7;
-        opticsZoomMin = 0.25/7;
+        opticsZoomMin = "0.25/16"; // 0.25 corresponds to 1x magnification
+        opticsZoomMax = "0.25/2";
+        opticsZoomInit = "0.25/4";
+        discretefov[] = {"0.25/2", "0.25/4", "0.25/8", "0.25/16"};
+        discreteInitIndex = 1;
         modelOptics = "\A3\Weapons_F\empty.p3d";
 
         class CBA_ScriptedOptic {
@@ -19,6 +22,7 @@ class CfgWeapons {
             reticleSafezoneSize = 1;
             hidePeripheralVision = 1;
             opticsPPEffects[] = {QGVAR(OpticsRadBlur1)};
+            disableTilt = 1;
         };
         weaponInfoType = "ACE_RscOptics_vector";
     };
